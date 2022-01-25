@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamarin.Forms.FloatingLabelEntry"
+             xmlns:effects="clr-namespace:Xamarin.Forms.FloatingLabelEntry.Effects"
+             x:Class=" Xamarin.Forms.FloatingLabelEntry.FloatingLabelEntry">
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+            <VisualState x:Name="Normal">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="1" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Disabled">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="0.5" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <StackLayout Orientation="Vertical">
+        <Frame x:Name="ContainerFrame"
+               BorderColor="{Binding BorderColour, Source={x:Reference FloatingLabelContentView}}"
+               CornerRadius="5">
+            <Frame.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="5" />
+                    <On Platform="Android" Value="0" />
+                </OnPlatform>
+            </Frame.Padding>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                      Tapped="OnContainerFrameTapped" />
+            </Frame.GestureRecognizers>
+            <Grid VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  RowDefinitions="Auto"
+                  ColumnDefinitions="Auto, *"
+                  RowSpacing="0"
+                  ColumnSpacing="0">
+                <Image x:Name="IconImage"
+                       Source="{Binding Icon, Source={x:Reference FloatingLabelContentView}}" 
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       WidthRequest="24"
+                       HeightRequest="24"
+                       IsVisible="False">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="5,0,0,0" />
+                        </OnPlatform>
+                    </Image.Margin>
+                    <Image.Effects>
+                        <effects:FloatingLabelEntryTintColourEffect />
+                    </Image.Effects>
+                </Image>
+                <local:InnerFloatingLabelEntry x:Name="EntryView"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Focused="OnEntryViewFocused"
+                                               Unfocused="OnEntryViewUnfocused"
+                                               TextChanged="OnEntryViewTextChanged"
+                                               VerticalOptions="Center"
+                                               IsPassword="{Binding IsPassword, Source={x:Reference FloatingLabelContentView}}"
+                                               Keyboard="{Binding Keyboard, Source={x:Reference FloatingLabelContentView}}"
+                                               Text="{Binding Text, Source={x:Reference FloatingLabelContentView}}"
+                                               MaxLength="{Binding MaxLength, Source={x:Reference FloatingLabelContentView}}"
+                                               FontFamily="{Binding FontFamily, Source={x:Reference FloatingLabelContentView}}"
+                                               FontSize="{Binding FontSize, Source={x:Reference FloatingLabelContentView}}"
+                                               ClearButtonVisibility="{Binding ClearButtonVisibility, Source={x:Reference FloatingLabelContentView}}"
+                                               ClearButtonColour="{Binding ClearButtonColour, Source={x:Reference FloatingLabelContentView}}"
+                                               Margin="{Binding EntryMargin, Source={x:Reference FloatingLabelContentView}}">
+                    <local:InnerFloatingLabelEntry.Effects>
+                        <effects:FloatingLabelEntryTintColourEffect />
+                        <!--<xct:RemoveBorderEffect />-->
+                    </local:InnerFloatingLabelEntry.Effects>
+                </local:InnerFloatingLabelEntry>
+                <Label x:Name="HighlightPlaceholderLabel"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding Placeholder, Source={x:Reference FloatingLabelContentView}}"
+                       TextColor="{Binding HighlightColour, Source={x:Reference FloatingLabelContentView}}"
+                       FontSize="{Binding FontSize, Source={x:Reference FloatingLabelContentView}}"
+                       TranslationY="0"
+                       InputTransparent="True"
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       Padding="{Binding PlaceholderPadding, Source={x:Reference FloatingLabelContentView}}">
+                </Label>
+                <Label x:Name="PlaceholderLabel"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding Placeholder, Source={x:Reference FloatingLabelContentView}}"
+                       TextColor="{Binding PlaceholderColour, Source={x:Reference FloatingLabelContentView}}"
+                       FontSize="{Binding FontSize, Source={x:Reference FloatingLabelContentView}}"
+                       TranslationY="0"
+                       Opacity="1"
+                       InputTransparent="True"
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       Padding="{Binding PlaceholderPadding, Source={x:Reference FloatingLabelContentView}}">
+                </Label>
+            </Grid>
+        </Frame>
+    </StackLayout>
+
+</ContentView>
