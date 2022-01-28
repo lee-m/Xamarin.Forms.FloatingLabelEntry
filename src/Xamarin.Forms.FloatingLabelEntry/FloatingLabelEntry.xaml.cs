@@ -19,6 +19,9 @@ namespace Xamarin.Forms.FloatingLabelEntry
         private static readonly Color SeventyPercentGrey = Color.FromHex("#B2B2B2");
         private static readonly Color DefaultErrorColour = Color.FromHex("#C46B6B");
 
+        private const double AndroidDefaultFontSize = 14;
+        private const double iOSDefaultFontSize = 17;
+
         private const string FocusedFloatingLabelTransition = "FocusedFloatingLabelTransition";
         private const string UnfocusedFloatingLabelTransition = "UnfocusedFloatingLabelTransition";
 
@@ -27,7 +30,7 @@ namespace Xamarin.Forms.FloatingLabelEntry
 
         public static readonly BindableProperty FontSizeProperty =
             BindableProperty.Create(nameof(FontSize), typeof(double), typeof(FloatingLabelEntry),
-                                    defaultValueCreator: bindable => Device.GetNamedSize(NamedSize.Default, ((FloatingLabelEntry)bindable).EntryView));
+                                    defaultValueCreator: bindable => Device.RuntimePlatform == Device.Android ? AndroidDefaultFontSize : iOSDefaultFontSize);
 
         public static readonly BindableProperty PlaceholderProperty =
             BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(FloatingLabelEntry));

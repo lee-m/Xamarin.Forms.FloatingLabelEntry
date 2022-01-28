@@ -2,14 +2,18 @@
 
 using UIKit;
 
+using Xamarin.Forms;
+using Xamarin.Forms.FloatingLabelEntry.Effects;
 using Xamarin.Forms.FloatingLabelEntry.Extensions;
 using Xamarin.Forms.Platform.iOS;
 
+[assembly: ExportEffect(typeof(TintColourEffect), nameof(TintColourEffect))]
+
 namespace Xamarin.Forms.FloatingLabelEntry
 {
-    public class iOSFloatingLabelEntryTintColourEffect : PlatformEffect
+    public class iOSTintColourEffect : PlatformEffect
     {
-        public iOSFloatingLabelEntryTintColourEffect()
+        public iOSTintColourEffect()
         { }
 
         protected override void OnAttached()
@@ -23,7 +27,6 @@ namespace Xamarin.Forms.FloatingLabelEntry
             FloatingLabelEntry.PropertyChanged -= Element_PropertyChanged;
             ClearTintColour();
         }
-
 
         private void UpdateTintColour()
         {

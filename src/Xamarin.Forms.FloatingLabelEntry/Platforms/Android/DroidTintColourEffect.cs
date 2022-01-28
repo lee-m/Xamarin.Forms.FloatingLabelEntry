@@ -6,12 +6,16 @@ using Android.Widget;
 
 using AndroidX.Core.Graphics;
 
+using Xamarin.Forms;
+using Xamarin.Forms.FloatingLabelEntry.Effects;
 using Xamarin.Forms.FloatingLabelEntry.Extensions;
 using Xamarin.Forms.Platform.Android;
 
+[assembly: ExportEffect(typeof(TintColourEffect), nameof(TintColourEffect))]
+
 namespace Xamarin.Forms.FloatingLabelEntry
 {
-    public class DroidFloatingLabelEntryTintColourEffect : PlatformEffect
+    public class DroidTintColourEffect : PlatformEffect
     {
         protected override void OnAttached()
         {

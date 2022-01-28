@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fle="clr-namespace:Xamarin.Forms.FloatingLabelEntry;assembly=Xamarin.Forms.FloatingLabelEntry"
+             x:Class="DemoApp.MainPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="fle:FloatingLabelEntry">
+            <Setter Property="HighlightColour" Value="#3061ab"/>
+            <Setter Property="ErrorColour" Value="#C46B6B" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical"
+                 Margin="32">
+        <!--
+        <fle:FloatingLabelEntry Placeholder="Default State" />
+        <fle:FloatingLabelEntry Placeholder="Error State"
+                                IsError="True" />
+        -->
+    </StackLayout>
+
+</ContentPage>

@@ -1,10 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-using Xamarin.Forms;
-
-namespace Xamarin.Forms.FloatingLabelEntry
+﻿namespace Xamarin.Forms.FloatingLabelEntry
 {
-    public class InnerFloatingLabelEntry : Entry
+    internal class InnerFloatingLabelEntry : Entry
     {
         private static readonly Color NinetyPercentGrey = Color.FromHex("#2D2D2D");
 

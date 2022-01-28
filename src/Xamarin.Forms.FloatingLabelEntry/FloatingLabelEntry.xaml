@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Forms.FloatingLabelEntry"
              xmlns:effects="clr-namespace:Xamarin.Forms.FloatingLabelEntry.Effects"
-             x:Class=" Xamarin.Forms.FloatingLabelEntry.FloatingLabelEntry">
+             x:Class=" Xamarin.Forms.FloatingLabelEntry.FloatingLabelEntry"
+             x:Name="FloatingLabelContentView">
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup x:Name="CommonStates">
             <VisualState x:Name="Normal">
@@ -24,6 +25,7 @@
         <Frame x:Name="ContainerFrame"
                BorderColor="{Binding BorderColour, Source={x:Reference FloatingLabelContentView}}"
                CornerRadius="5">
+
             <Frame.Padding>
                 <OnPlatform x:TypeArguments="Thickness">
                     <On Platform="iOS" Value="5" />
@@ -53,7 +55,7 @@
                         </OnPlatform>
                     </Image.Margin>
                     <Image.Effects>
-                        <effects:FloatingLabelEntryTintColourEffect />
+                        <effects:TintColourEffect />
                     </Image.Effects>
                 </Image>
                 <local:InnerFloatingLabelEntry x:Name="EntryView"
@@ -72,10 +74,11 @@
                                                ClearButtonVisibility="{Binding ClearButtonVisibility, Source={x:Reference FloatingLabelContentView}}"
                                                ClearButtonColour="{Binding ClearButtonColour, Source={x:Reference FloatingLabelContentView}}"
                                                Margin="{Binding EntryMargin, Source={x:Reference FloatingLabelContentView}}">
+                <!--
                     <local:InnerFloatingLabelEntry.Effects>
-                        <effects:FloatingLabelEntryTintColourEffect />
-                        <!--<xct:RemoveBorderEffect />-->
+                        <effects:TintColourEffect />
                     </local:InnerFloatingLabelEntry.Effects>
+                -->
                 </local:InnerFloatingLabelEntry>
                 <Label x:Name="HighlightPlaceholderLabel"
                        Grid.Row="0"
